@@ -7,6 +7,7 @@ function App() {
       <p><strong>Ogrenci No:</strong> 235541026</p>
       <p><strong>Bölüm:</strong> Yazılım Mühendisliği</p>
       <p><strong>Hobiler:</strong> Yüzme, Network ve Valorant</p>
+      <ul><li>Hobiler: Yüzme, Network ve Valorant</li></ul>
     </div>
   )
 }
