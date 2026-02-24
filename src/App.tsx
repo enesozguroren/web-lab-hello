@@ -1,6 +1,7 @@
 function App() {
   return (
     <div>
+      <p>Bu benim ilk React projem!</p>
       <h1>Web Tasarimi ve Programlama</h1>
       <h2>LAB-1</h2>
       <p><strong>Ad Soyad:</strong> Enes Özgür Ören</p>
