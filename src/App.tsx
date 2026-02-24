@@ -2,17 +2,15 @@ function App() {
   return (
     <div className="app-container">
       
-      {/* Uygulama-3: Ana içeriğe atla bağlantısı (Skip Navigation) eklendi */}
+      {/* Uygulama-3 & 5: Ana içeriğe atla bağlantısı (Skip Navigation) */}
       <a href="#main-content" className="skip-link">
         Ana icerige atla
       </a>
 
-      {/* Uygulama-1: Header ve Navigasyon */}
+      {/* Uygulama-1 & 5: Header ve Navigasyon */}
       <header>
-        {/* Sayfanın ana başlığı eklendi (Hiyerarşi kuralı) */}
         <h1>Enes Özgür Ören - Kişisel Portföy</h1>
         
-        {/* Uygulama-3: aria-label zaten kodunda mevcuttu, korundu */}
         <nav aria-label="Ana navigasyon">
           <ul>
             <li><a href="#hakkimda">Hakkimda</a></li>
@@ -22,20 +20,28 @@ function App() {
         </nav>
       </header>
 
-      {/* Uygulama-1: Ana İçerik Alanı */}
+      {/* Uygulama-1 & 5: Ana İçerik Alanı */}
       <main id="main-content">
         
-        {/* Uygulama-2: Hakkımda Bölümü ve Profil Fotoğrafı */}
+        {/* Uygulama-2 & 5: Hakkımda Bölümü */}
         <section id="hakkimda">
           <h2>Hakkimda</h2>
           <figure>
             <img src="profil.jpg" alt="Enes Özgür Ören'in vesikalık fotoğrafı" />
             <figcaption>Enes Özgür Ören</figcaption>
           </figure>
-          <p>Yazılım Mühendisliği 3. sınıf öğrencisiyim. Network, siber güvenlik ve web teknolojileri alanlarında kendimi geliştiriyorum.</p>
+          <p>Fırat Üniversitesi Yazılım Mühendisliği 3. sınıf öğrencisiyim. Network, siber güvenlik ve web teknolojileri alanlarında kendimi geliştiriyorum.</p>
+          
+          {/* Uygulama-5: Kullandığım Teknolojiler Listesi Eklendi */}
+          <h3>Kullandığım Teknolojiler</h3>
+          <ul>
+            <li>React & TypeScript</li>
+            <li>HTML5 & CSS3</li>
+            <li>Ağ Güvenliği & CCNA</li>
+          </ul>
         </section>
 
-        {/* Uygulama-2: Projelerim Bölümü ve Proje Görselleri */}
+        {/* Uygulama-2 & 5: Projelerim Bölümü */}
         <section id="projeler">
           <h2>Projelerim</h2>
           
@@ -43,20 +49,21 @@ function App() {
             <h3>Web LAB-1: Hello Project</h3>
             <img src="lab1.png" alt="Web LAB-1 Hello projesinin tarayıcıdaki ekran görüntüsü" />
             <p>Vite, React ve TypeScript kullanılarak oluşturulmuş ilk laboratuvar uygulaması.</p>
+            <p><strong>Teknolojiler:</strong> React, TypeScript, Git</p>
           </article>
 
           <article>
             <h3>Siber Vatan Çalışmaları</h3>
             <img src="siber.png" alt="Siber güvenlik ağ analizi çalışmalarını gösteren ekran görüntüsü" />
             <p>Siber Vatan programı kapsamında yapılan ağ analizi ve güvenlik testleri.</p>
+            {/* Uygulama-5: Kullanılan teknolojiler eklendi */}
+            <p><strong>Teknolojiler:</strong> Wireshark, Ağ Analizi Araçları, Linux</p>
           </article>
         </section>
 
-        {/* İletişim bölümü iskelet olarak kalmaya devam ediyor */}
-        {/* Uygulama-4: Doğrulamalı İletişim Formu */}
+        {/* Uygulama-4 & 5: Doğrulamalı İletişim Formu */}
         <section id="iletisim">
           <h2>Iletisim</h2>
-          {/* novalidate: Tarayıcı doğrulamalarını kapatır, biz yöneteceğiz */}
           <form action="#" method="POST" noValidate>
             <fieldset>
               <legend>Iletisim Formu</legend>
@@ -71,7 +78,6 @@ function App() {
                   minLength={2} 
                   aria-describedby="name-error" 
                 />
-                {/* role="alert": Ekran okuyucu hatayı anında okur */}
                 <small id="name-error" className="error-msg" role="alert"></small>
               </div>
 
@@ -118,9 +124,14 @@ function App() {
 
       </main>
       
-      {/* Uygulama-1: Footer */}
+      {/* Uygulama-1 & 5: Footer */}
       <footer>
         <p>&copy; 2026 Enes Özgür Ören. Tüm hakları saklıdır.</p>
+        {/* Uygulama-5: Sosyal Medya Bağlantıları Eklendi */}
+        <ul>
+          <li><a href="https://github.com/enesozguroren" target="_blank" rel="noopener noreferrer">GitHub</a></li>
+          <li><a href="#" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
+        </ul>
       </footer>
     </div>
   );
