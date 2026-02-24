@@ -15,5 +15,3 @@ Bu proje, Web Tasarimi ve Programlama dersi LAB-1 kapsaminda Vite + React + Type
 ## Kurulum
 ```bash
 npm install
-
-![Uygulama Ekran Görüntüsü](./screenshot.png)
