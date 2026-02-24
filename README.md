@@ -26,7 +26,7 @@ Bu proje, Web Tasarimi ve Programlama dersi LAB-1 kapsaminda Vite + React + Type
 - TypeScript
 - Vite
 
-## Kullanilan Teknolojiler
+## SS
 ![Uygulama Ekran Görüntüsü](./screenshot.png)
 
 ## Kurulum
