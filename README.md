@@ -1,20 +1,28 @@
-# Web LAB-1 - Hello Project
+# Web LAB-2 - Semantik HTML ve Erişilebilirlik (a11y)
 
-## Hakkinda
-Bu proje, Web Tasarimi ve Programlama dersi LAB-1 kapsaminda Vite + React + TypeScript kullanilarak olusturulmustur.
+## Hakkında
+Bu proje, Web Tasarımı ve Programlama dersi LAB-2 kapsamında Semantik HTML5 etiketleri ve erişilebilirlik (accessibility/a11y) standartlarına uygun olarak geliştirilmiş kişisel portföy sayfasıdır.
 
-## Gelistirici
-- **Ad Soyad:** Enes Özgür Ören
-- **Ogrenci No:** 235541026
+## Geliştirici
+* **Ad Soyad:** Enes Özgür Ören
+* **Öğrenci No:** 235541026
 
-## Kullanilan Teknolojiler
-- React 18
-- TypeScript
-- Vite
+## Kullanılan Teknolojiler
+* Semantic HTML5
+* CSS3
+* React (Vite & TypeScript)
 
-## Ekran Goruntusu
-![Uygulama Ekran Görüntüsü](./screenshot.png)
+## Erişilebilirlik (a11y) Başarıları
+* `Tab` tuşu ile tam klavye gezinimi (Keyboard Navigation) ve "Ana içeriğe atla" (Skip-link) bağlantısı eklendi.
+* Tüm form elemanları `aria-describedby` ve `role="alert"` ile ekran okuyuculara (Screen Readers) tam uyumlu hale getirildi.
+* Doğru başlık (Heading) hiyerarşisi (`h1` -> `h2` -> `h3`) ve görsel `alt` metinleri uygulandı.
+* **Google Lighthouse Erişilebilirlik Puanı:** 100 💯
+
+## Ekran Görüntüsü (Lighthouse Raporu)
+![Lighthouse Raporu](Lighthouse%20Raporu.png)
 
 ## Kurulum
+
 ```bash
 npm install
+npm run dev
