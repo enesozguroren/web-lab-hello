@@ -1,4 +1,12 @@
 # Web LAB-2 - Semantik HTML ve Erişilebilirlik (a11y)
+## 🚀 Son Güncellemeler (LAB-3: Modern CSS & Responsive Layout)
+
+Bu proje, modern web standartlarına uygun olarak aşağıdaki mimari yaklaşımlarla geliştirilmiştir:
+
+* **📱 Mobile-First Tasarım:** Kapsamlı Media Query kullanımıyla mobil, tablet ve masaüstü cihazlara %100 uyumlu tam responsive arayüz.
+* **📐 Flexbox & CSS Grid:** Navigasyon ve araç çubuklarında tek boyutlu esnek hizalama (Flexbox), proje kartlarında ise otomatik ölçeklenen (`auto-fit`) iki boyutlu ızgara sistemi (Grid).
+* **🎨 Design Tokens (Tasarım Jetonları):** Renk paleti, boşluk (spacing) ve border-radius gibi UI kararlarının tek merkezden (`:root` değişkenleri) yönetildiği sürdürülebilir CSS mimarisi.
+* **🔤 Fluid Typography (Akıcı Tipografi):** `clamp()` fonksiyonu kullanılarak ekran genişliğine göre kademesiz ve yumuşak bir şekilde ölçeklenen erişilebilir metinler.
 
 ## Hakkında
 Bu proje, Web Tasarımı ve Programlama dersi LAB-2 kapsamında Semantik HTML5 etiketleri ve erişilebilirlik (accessibility/a11y) standartlarına uygun olarak geliştirilmiş kişisel portföy sayfasıdır.
