@@ -8,6 +8,7 @@ Bu proje, modern web standartlarına uygun olarak aşağıdaki mimari yaklaşım
 * **🎨 Design Tokens (Tasarım Jetonları):** Renk paleti, boşluk (spacing) ve border-radius gibi UI kararlarının tek merkezden (`:root` değişkenleri) yönetildiği sürdürülebilir CSS mimarisi.
 * **🔤 Fluid Typography (Akıcı Tipografi):** `clamp()` fonksiyonu kullanılarak ekran genişliğine göre kademesiz ve yumuşak bir şekilde ölçeklenen erişilebilir metinler.
 
+
 ## Hakkında
 Bu proje, Web Tasarımı ve Programlama dersi LAB-2 kapsamında Semantik HTML5 etiketleri ve erişilebilirlik (accessibility/a11y) standartlarına uygun olarak geliştirilmiş kişisel portföy sayfasıdır.
 
@@ -24,7 +25,7 @@ Bu proje, Web Tasarımı ve Programlama dersi LAB-2 kapsamında Semantik HTML5 e
 * `Tab` tuşu ile tam klavye gezinimi (Keyboard Navigation) ve "Ana içeriğe atla" (Skip-link) bağlantısı eklendi.
 * Tüm form elemanları `aria-describedby` ve `role="alert"` ile ekran okuyuculara (Screen Readers) tam uyumlu hale getirildi.
 * Doğru başlık (Heading) hiyerarşisi (`h1` -> `h2` -> `h3`) ve görsel `alt` metinleri uygulandı.
-* **Google Lighthouse Erişilebilirlik Puanı:** 100 💯
+* **Google Lighthouse Erişilebilirlik Puanı:** 100 
 
 ## Ekran Görüntüsü (Lighthouse Raporu)
 ![Lighthouse Raporu](Lighthouse%20Raporu.png)
