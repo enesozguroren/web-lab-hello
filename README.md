@@ -1,4 +1,15 @@
 # Web LAB-2 - Semantik HTML ve Erişilebilirlik (a11y)
+
+## 🚀 Son Güncellemeler (LAB-4: Tailwind CSS & UI Component Mimarisi)
+
+Bu projede modern web geliştirme standartları doğrultusunda aşağıdaki Tailwind CSS entegrasyonları yapılmıştır:
+
+* [cite_start]**🌬️ Utility-First CSS:** Tailwind CSS v4 kurularak hızlı ve tutarlı arayüz geliştirme altyapısı sağlandı[cite: 3, 5].
+* [cite_start]**🧩 Component Mimarisi:** Tekrar kullanılabilir React bileşenleri (Button, Input, Card, Alert) ve çoklu varyant desteği eklendi[cite: 14, 15, 17, 18].
+* [cite_start]**🎨 UI Kit:** Geliştirilen tüm bileşenlerin (en az 8 varyant) sergilendiği özel bir tasarım sistemi sayfası oluşturuldu[cite: 23].
+* [cite_start]**🌓 Dark Mode:** `dark:` öneki kullanılarak, kullanıcı kontrollü karanlık tema entegrasyonu yapıldı[cite: 11].
+* [cite_start]**📱 Responsive Tasarım:** Tailwind'in `sm:`, `md:`, `lg:` önekleriyle mobil öncelikli (mobile-first) uyumlu yapı kuruldu[cite: 9].
+ 
 ## 🚀 Son Güncellemeler (LAB-3: Modern CSS & Responsive Layout)
 
 Bu proje, modern web standartlarına uygun olarak aşağıdaki mimari yaklaşımlarla geliştirilmiştir:
