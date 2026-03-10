@@ -1,283 +1,116 @@
 import './App.css';
+import Button from './components/Button';
+import Input from './components/Input';
+import Card from './components/Card';
 
 function App() {
-
   return (
-
-    <div className="app-container">
-
-     
-
-      {/* Uygulama-3: Ana içeriğe atla bağlantısı */}
-
-      <a href="#main-content" className="skip-link">
-
+    <div className="min-h-screen bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100 transition-colors duration-300">
+      
+      {/* Ana İçeriğe Atla Linki */}
+      <a href="#main-content" className="sr-only focus:not-sr-only focus:absolute focus:top-0 focus:left-0 bg-blue-800 text-white p-2 z-50">
         Ana icerige atla
-
       </a>
 
+      {/* Tema Değiştirme Butonu */}
+      <button 
+        onClick={() => document.documentElement.classList.toggle('dark')} 
+        className="fixed bottom-4 right-4 z-50 bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-200 p-3 rounded-full shadow-lg hover:scale-110 transition-transform" 
+        aria-label="Tema degistir"
+      >
+        <span className="dark:hidden">🌙</span>
+        <span className="hidden dark:inline">☀️</span>
+      </button>
 
-
-      {/* Uygulama-4: Header ve Navigasyon (Flexbox) */}
-
-      <header>
-
-        <h1 className="site-title">Enes Özgür Ören - Kişisel Portföy</h1>
-
-       
-
-        <nav aria-label="Ana navigasyon">
-
-          <ul>
-
-            <li><a href="#hakkimda">Hakkimda</a></li>
-
-            <li><a href="#projeler">Projeler</a></li>
-
-            <li><a href="#iletisim">Iletisim</a></li>
-
-          </ul>
-
-        </nav>
-
+      {/* HEADER & NAV */}
+      <header className="sticky top-0 z-40 bg-white dark:bg-gray-900 border-b border-gray-200 dark:border-gray-700">
+        <div className="max-w-6xl mx-auto px-4 py-3 flex flex-col sm:flex-row justify-between items-center gap-3">
+          <h1 className="text-xl font-bold text-blue-800 dark:text-blue-300">
+            Enes Özgür Ören
+          </h1>
+          <nav aria-label="Ana navigasyon">
+            <ul className="flex flex-wrap gap-2">
+              <li><a href="#hakkimda" className="px-3 py-1 rounded-md text-gray-700 dark:text-gray-300 hover:bg-blue-100 dark:hover:bg-gray-800 transition-colors">Hakkimda</a></li>
+              <li><a href="#projeler" className="px-3 py-1 rounded-md text-gray-700 dark:text-gray-300 hover:bg-blue-100 dark:hover:bg-gray-800 transition-colors">Projeler</a></li>
+              <li><a href="#iletisim" className="px-3 py-1 rounded-md text-gray-700 dark:text-gray-300 hover:bg-blue-100 dark:hover:bg-gray-800 transition-colors">Iletisim</a></li>
+            </ul>
+          </nav>
+        </div>
       </header>
 
-
-
       <main id="main-content">
-
-       
-
-        {/* Hakkımda Bölümü */}
-        <section id="hakkimda">
-          <h2>Hakkimda</h2>
-          
-          {/* UYGULAMA-7: Responsive düzen için about-content kapsayıcısı eklendi */}
-          <div className="about-content">
-            <figure>
-              <img src="profil.jpg" alt="Enes Özgür Ören'in vesikalık fotoğrafı" />
-              <figcaption>Enes Özgür Ören</figcaption>
+        {/* HAKKIMDA */}
+        <section id="hakkimda" className="py-16 px-4">
+          <div className="max-w-4xl mx-auto flex flex-col md:flex-row items-center md:items-start gap-8">
+            <figure className="shrink-0">
+              <img src="profil.jpg" alt="Vesikalık fotoğraf" className="w-40 h-40 rounded-full object-cover shadow-lg" />
             </figure>
-            
             <div>
-              <p>Fırat Üniversitesi Yazılım Mühendisliği 3. sınıf öğrencisiyim. Network, siber güvenlik ve web teknolojileri alanlarında kendimi geliştiriyorum.</p>
-              
-              <h3>Kullandığım Teknolojiler</h3>
-              <ul className="skill-tags" role="list" aria-label="Beceri etiketleri">
-                <li>React & TypeScript</li>
-                <li>HTML5 & CSS3</li>
-                <li>Ağ Güvenliği & CCNA</li>
+              <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-4 text-center md:text-left">
+                Hakkimda
+              </h2>
+              <p className="text-gray-600 dark:text-gray-400 mb-4 leading-relaxed">
+                Fırat Üniversitesi Yazılım Mühendisliği 3. sınıf öğrencisiyim. Network, siber güvenlik ve web teknolojileri alanlarında kendimi geliştiriyorum.
+              </p>
+              <ul className="flex flex-wrap gap-2">
+                <li className="bg-blue-800 text-white px-3 py-1 rounded-full text-sm">React & TypeScript</li>
+                <li className="bg-blue-800 text-white px-3 py-1 rounded-full text-sm">Ağ Güvenliği & CCNA</li>
+                <li className="bg-blue-800 text-white px-3 py-1 rounded-full text-sm">Tailwind CSS</li>
               </ul>
             </div>
           </div>
         </section>
 
-
-
-        {/* Projelerim Bölümü */}
-
-        <section id="projeler">
-
-          <h2>Projelerim</h2>
-
-         
-
-          {/* Uygulama-6 İçin Hazırlık: Projeler grid kapsayıcısı içine alındı */}
-
-          <div className="project-grid">
-
-            <article className="project-card">
-
-              <img src="lab1.png" alt="Web LAB-1 Hello projesinin tarayıcıdaki ekran görüntüsü" />
-
-              <h3>Web LAB-1: Hello Project</h3>
-
-              <p>Vite, React ve TypeScript kullanılarak oluşturulmuş ilk laboratuvar uygulaması.</p>
-
-              <ul className="skill-tags">
-
-                <li>React</li>
-
-                <li>TypeScript</li>
-
-                <li>Git</li>
-
-              </ul>
-
-            </article>
-
-
-
-            <article className="project-card">
-
-              <img src="siber.png" alt="Siber güvenlik ağ analizi çalışmalarını gösteren ekran görüntüsü" />
-
-              <h3>Siber Vatan Çalışmaları</h3>
-
-              <p>Siber Vatan programı kapsamında yapılan ağ analizi ve güvenlik testleri.</p>
-
-              <ul className="skill-tags">
-
-                <li>Wireshark</li>
-
-                <li>Ağ Analizi Araçları</li>
-
-                <li>Linux</li>
-
-              </ul>
-
-            </article>
-
+        {/* PROJELERİM (Card Component Kullanımı) */}
+        <section id="projeler" className="py-16 px-4 bg-gray-50 dark:bg-gray-800">
+          <div className="max-w-6xl mx-auto">
+            <h2 className="text-3xl font-bold text-center text-gray-900 dark:text-white mb-10">
+              Projelerim
+            </h2>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+              <Card variant="elevated" image="lab1.png" title="Web LAB-1: Hello Project">
+                Vite, React ve TypeScript kullanılarak oluşturulmuş ilk laboratuvar uygulaması.
+              </Card>
+              <Card variant="elevated" image="siber.png" title="Siber Vatan Çalışmaları">
+                Siber Vatan programı kapsamında yapılan ağ analizi ve güvenlik testleri.
+              </Card>
+              <Card variant="elevated" image="https://via.placeholder.com/400x200" title="Kişisel Portföy">
+                Tailwind CSS kullanılarak geliştirilmiş modern ve responsive web sitesi.
+              </Card>
+            </div>
           </div>
-
         </section>
 
-
-
-        {/* İletişim Bölümü */}
-
-        <section id="iletisim">
-
-          <h2>Iletisim</h2>
-
-          <form action="#" method="POST" noValidate>
-
-            <fieldset>
-
-              <legend>Iletisim Formu</legend>
-
-
-
-              <div className="form-group">
-
-                <label htmlFor="name">Ad Soyad:</label>
-
-                <input
-
-                  type="text"
-
-                  id="name"
-
-                  name="name"
-
-                  required
-
-                  minLength={2}
-
-                  aria-describedby="name-error"
-
-                />
-
-                <small id="name-error" className="error-msg" role="alert"></small>
-
+        {/* İLETİŞİM (Input ve Button Component Kullanımı) */}
+        <section id="iletisim" className="py-16 px-4">
+          <div className="max-w-lg mx-auto">
+            <h2 className="text-3xl font-bold text-center text-gray-900 dark:text-white mb-8">
+              Iletisim
+            </h2>
+            <form className="space-y-4">
+              <Input id="name" label="Ad Soyad" required />
+              <Input id="email" label="E-posta" type="email" required />
+              <div className="space-y-1">
+                <label htmlFor="message" className="block text-sm font-medium text-gray-700 dark:text-gray-300">
+                  Mesajiniz
+                </label>
+                <textarea id="message" rows={5} required className="w-full px-3 py-2 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:outline-none dark:bg-gray-800 dark:text-gray-100 dark:border-gray-600"></textarea>
               </div>
-
-
-
-              <div className="form-group">
-
-                <label htmlFor="email">E-posta:</label>
-
-                <input
-
-                  type="email"
-
-                  id="email"
-
-                  name="email"
-
-                  required
-
-                  aria-describedby="email-error"
-
-                />
-
-                <small id="email-error" className="error-msg" role="alert"></small>
-
-              </div>
-
-
-
-              <div className="form-group">
-
-                <label htmlFor="subject">Konu:</label>
-
-                <select id="subject" name="subject" required aria-describedby="subject-error">
-
-                  <option value="">-- Seciniz --</option>
-
-                  <option value="is">Is Teklifi</option>
-
-                  <option value="soru">Soru</option>
-
-                  <option value="oneri">Oneri</option>
-
-                </select>
-
-                <small id="subject-error" className="error-msg" role="alert"></small>
-
-              </div>
-
-
-
-              <div className="form-group">
-
-                <label htmlFor="message">Mesajiniz:</label>
-
-                <textarea
-
-                  id="message"
-
-                  name="message"
-
-                  rows={5}
-
-                  required
-
-                  minLength={10}
-
-                  aria-describedby="message-error"
-
-                ></textarea>
-
-                <small id="message-error" className="error-msg" role="alert"></small>
-
-              </div>
-
-
-
-              <button type="submit">Gonder</button>
-
-            </fieldset>
-
-          </form>
-
+              <Button variant="primary" size="lg" type="submit" className="w-full">
+                Gonder
+              </Button>
+            </form>
+          </div>
         </section>
-
-
-
       </main>
 
-     
-
-      <footer>
-
+      {/* FOOTER */}
+      <footer className="bg-gray-100 dark:bg-gray-900 border-t border-gray-200 dark:border-gray-700 text-center py-6 px-4 text-gray-500 dark:text-gray-400 text-sm">
         <p>&copy; 2026 Enes Özgür Ören. Tüm hakları saklıdır.</p>
-
-        <ul>
-
-          <li><a href="https://github.com/enesozguroren" target="_blank" rel="noopener noreferrer">GitHub</a></li>
-
-          <li><a href="#" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
-
-        </ul>
-
       </footer>
 
     </div>
-
   );
-
 }
 
 export default App;
