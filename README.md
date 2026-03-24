@@ -1,14 +1,23 @@
-# Web LAB-2 - Semantik HTML ve Erişilebilirlik (a11y)
+# Web LAB
+
+## 🚀 Son Güncellemeler (LAB-5: TypeScript & State Mantığı)
+
+[cite_start]Bu projede geleneksel DOM manipülasyonu yerine modern React state yönetimi ve tip güvenliği entegre edilmiştir [cite: 857-859]:
+
+* [cite_start]**🛡️ TypeScript Entegrasyonu:** `interface` ve `type` kullanılarak veri modelleri tanımlandı, derleme zamanı tip güvenliği sağlandı [cite: 600-602].
+* [cite_start]**📡 Fetch API & Async/Await:** Yerel JSON dosyasından asenkron olarak proje verileri çekildi [cite: 198-210].
+* [cite_start]**🚦 Error Handling:** `try/catch/finally` bloklarıyla ağ veya veri hatalarına karşı güvenli hata yönetimi uygulandı [cite: 366-369].
+* [cite_start]**🔄 State Yönetimi:** Filtreleme (arama, kategori) ve sıralama işlemleri React state üzerinden anlık olarak (DOM'a dokunmadan) gerçekleştirildi [cite: 902-942].
 
 ## 🚀 Son Güncellemeler (LAB-4: Tailwind CSS & UI Component Mimarisi)
 
 Bu projede modern web geliştirme standartları doğrultusunda aşağıdaki Tailwind CSS entegrasyonları yapılmıştır:
 
-* [cite_start]**🌬️ Utility-First CSS:** Tailwind CSS v4 kurularak hızlı ve tutarlı arayüz geliştirme altyapısı sağlandı[cite: 3, 5].
-* [cite_start]**🧩 Component Mimarisi:** Tekrar kullanılabilir React bileşenleri (Button, Input, Card, Alert) ve çoklu varyant desteği eklendi[cite: 14, 15, 17, 18].
-* [cite_start]**🎨 UI Kit:** Geliştirilen tüm bileşenlerin (en az 8 varyant) sergilendiği özel bir tasarım sistemi sayfası oluşturuldu[cite: 23].
-* [cite_start]**🌓 Dark Mode:** `dark:` öneki kullanılarak, kullanıcı kontrollü karanlık tema entegrasyonu yapıldı[cite: 11].
-* [cite_start]**📱 Responsive Tasarım:** Tailwind'in `sm:`, `md:`, `lg:` önekleriyle mobil öncelikli (mobile-first) uyumlu yapı kuruldu[cite: 9].
+* **🌬️ Utility-First CSS:** Tailwind CSS v4 kurularak hızlı ve tutarlı arayüz geliştirme altyapısı sağlandı.
+* **🧩 Component Mimarisi:** Tekrar kullanılabilir React bileşenleri (Button, Input, Card, Alert) ve çoklu varyant desteği eklendi.
+* **🎨 UI Kit:** Geliştirilen tüm bileşenlerin (en az 8 varyant) sergilendiği özel bir tasarım sistemi sayfası oluşturuldu.
+* **🌓 Dark Mode:** `dark:` öneki kullanılarak, kullanıcı kontrollü karanlık tema entegrasyonu yapıldı.
+* **📱 Responsive Tasarım:** Tailwind'in `sm:`, `md:`, `lg:` önekleriyle mobil öncelikli (mobile-first) uyumlu yapı kuruldu.
  
 ## 🚀 Son Güncellemeler (LAB-3: Modern CSS & Responsive Layout)
 
@@ -18,7 +27,6 @@ Bu proje, modern web standartlarına uygun olarak aşağıdaki mimari yaklaşım
 * **📐 Flexbox & CSS Grid:** Navigasyon ve araç çubuklarında tek boyutlu esnek hizalama (Flexbox), proje kartlarında ise otomatik ölçeklenen (`auto-fit`) iki boyutlu ızgara sistemi (Grid).
 * **🎨 Design Tokens (Tasarım Jetonları):** Renk paleti, boşluk (spacing) ve border-radius gibi UI kararlarının tek merkezden (`:root` değişkenleri) yönetildiği sürdürülebilir CSS mimarisi.
 * **🔤 Fluid Typography (Akıcı Tipografi):** `clamp()` fonksiyonu kullanılarak ekran genişliğine göre kademesiz ve yumuşak bir şekilde ölçeklenen erişilebilir metinler.
-
 
 ## Hakkında
 Bu proje, Web Tasarımı ve Programlama dersi LAB-2 kapsamında Semantik HTML5 etiketleri ve erişilebilirlik (accessibility/a11y) standartlarına uygun olarak geliştirilmiş kişisel portföy sayfasıdır.

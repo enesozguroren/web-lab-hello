@@ -1,116 +1,166 @@
+import { useState, useEffect } from "react";
 import './App.css';
-import Button from './components/Button';
-import Input from './components/Input';
-import Card from './components/Card';
+import type { Project, Category, SortField, SortOrder } from "./types/project";
+import { fetchProjects } from "./services/projectService";
+import { applyFilters } from "./utils/projectHelpers";
+import Card from "./components/Card";
+import Input from "./components/Input";
+import Button from "./components/Button";
+import Alert from "./components/Alert";
 
-function App() {
+export default function App() {
+  // --- STATE (DURUM) YÖNETİMİ ---
+  const [projects, setProjects] = useState<Project[]>([]);
+  const [search, setSearch] = useState("");
+  const [category, setCategory] = useState<Category | "all">("all");
+  const [sortField, setSortField] = useState<SortField>("year");
+  const [sortOrder, setSortOrder] = useState<SortOrder>("desc");
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
+
+  // --- VERİ ÇEKME (API İSTEĞİ) ---
+  useEffect(() => {
+    async function load() {
+      try {
+        setLoading(true);
+        setError(null);
+        const data = await fetchProjects();
+        setProjects(data);
+      } catch (err) {
+        setError(err instanceof Error ? err.message : "Bilinmeyen hata");
+      } finally {
+        setLoading(false);
+      }
+    }
+    load();
+  }, []);
+
+  // --- TÜRETİLMİŞ VERİ (Filtreleme ve Sıralama) ---
+  const filtered = applyFilters(projects, search, category, sortField, sortOrder);
+  const categories: (Category | "all")[] = ["all", "frontend", "fullstack", "backend"];
+
+  // --- UI (KULLANICI ARAYÜZÜ) ---
   return (
-    <div className="min-h-screen bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100 transition-colors duration-300">
+    <div className="min-h-screen bg-gray-50 dark:bg-gray-950 transition-colors duration-300 p-4 md:p-8">
       
-      {/* Ana İçeriğe Atla Linki */}
-      <a href="#main-content" className="sr-only focus:not-sr-only focus:absolute focus:top-0 focus:left-0 bg-blue-800 text-white p-2 z-50">
-        Ana icerige atla
-      </a>
-
       {/* Tema Değiştirme Butonu */}
       <button 
         onClick={() => document.documentElement.classList.toggle('dark')} 
-        className="fixed bottom-4 right-4 z-50 bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-200 p-3 rounded-full shadow-lg hover:scale-110 transition-transform" 
+        className="fixed top-4 right-4 z-50 bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-200 p-3 rounded-full shadow-lg hover:scale-110 transition-transform" 
         aria-label="Tema degistir"
       >
         <span className="dark:hidden">🌙</span>
         <span className="hidden dark:inline">☀️</span>
       </button>
 
-      {/* HEADER & NAV */}
-      <header className="sticky top-0 z-40 bg-white dark:bg-gray-900 border-b border-gray-200 dark:border-gray-700">
-        <div className="max-w-6xl mx-auto px-4 py-3 flex flex-col sm:flex-row justify-between items-center gap-3">
-          <h1 className="text-xl font-bold text-blue-800 dark:text-blue-300">
-            Enes Özgür Ören
-          </h1>
-          <nav aria-label="Ana navigasyon">
-            <ul className="flex flex-wrap gap-2">
-              <li><a href="#hakkimda" className="px-3 py-1 rounded-md text-gray-700 dark:text-gray-300 hover:bg-blue-100 dark:hover:bg-gray-800 transition-colors">Hakkimda</a></li>
-              <li><a href="#projeler" className="px-3 py-1 rounded-md text-gray-700 dark:text-gray-300 hover:bg-blue-100 dark:hover:bg-gray-800 transition-colors">Projeler</a></li>
-              <li><a href="#iletisim" className="px-3 py-1 rounded-md text-gray-700 dark:text-gray-300 hover:bg-blue-100 dark:hover:bg-gray-800 transition-colors">Iletisim</a></li>
-            </ul>
-          </nav>
-        </div>
-      </header>
+      <div className="max-w-6xl mx-auto mt-8">
+        <h1 className="text-3xl font-bold text-gray-900 dark:text-white mb-8">
+          Projelerim
+        </h1>
 
-      <main id="main-content">
-        {/* HAKKIMDA */}
-        <section id="hakkimda" className="py-16 px-4">
-          <div className="max-w-4xl mx-auto flex flex-col md:flex-row items-center md:items-start gap-8">
-            <figure className="shrink-0">
-              <img src="profil.jpg" alt="Vesikalık fotoğraf" className="w-40 h-40 rounded-full object-cover shadow-lg" />
-            </figure>
-            <div>
-              <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-4 text-center md:text-left">
-                Hakkimda
-              </h2>
-              <p className="text-gray-600 dark:text-gray-400 mb-4 leading-relaxed">
-                Fırat Üniversitesi Yazılım Mühendisliği 3. sınıf öğrencisiyim. Network, siber güvenlik ve web teknolojileri alanlarında kendimi geliştiriyorum.
-              </p>
-              <ul className="flex flex-wrap gap-2">
-                <li className="bg-blue-800 text-white px-3 py-1 rounded-full text-sm">React & TypeScript</li>
-                <li className="bg-blue-800 text-white px-3 py-1 rounded-full text-sm">Ağ Güvenliği & CCNA</li>
-                <li className="bg-blue-800 text-white px-3 py-1 rounded-full text-sm">Tailwind CSS</li>
-              </ul>
-            </div>
+        {/* HATA DURUMU */}
+        {error && (
+          <Alert variant="error" title="Hata" className="mb-6">
+            {error}
+          </Alert>
+        )}
+
+        {/* FİLTRELER VE ARAMA BÖLÜMÜ */}
+        <div className="flex flex-col md:flex-row gap-4 mb-8 items-start md:items-center">
+          
+          <div className="flex-1 w-full md:w-auto">
+            <Input 
+              id="search" 
+              placeholder="Proje ara (Örn: React, E-Ticaret)..." 
+              value={search} 
+              onChange={(e: any) => setSearch(e.target.value)} 
+            />
           </div>
-        </section>
 
-        {/* PROJELERİM (Card Component Kullanımı) */}
-        <section id="projeler" className="py-16 px-4 bg-gray-50 dark:bg-gray-800">
-          <div className="max-w-6xl mx-auto">
-            <h2 className="text-3xl font-bold text-center text-gray-900 dark:text-white mb-10">
-              Projelerim
-            </h2>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-              <Card variant="elevated" image="lab1.png" title="Web LAB-1: Hello Project">
-                Vite, React ve TypeScript kullanılarak oluşturulmuş ilk laboratuvar uygulaması.
-              </Card>
-              <Card variant="elevated" image="siber.png" title="Siber Vatan Çalışmaları">
-                Siber Vatan programı kapsamında yapılan ağ analizi ve güvenlik testleri.
-              </Card>
-              <Card variant="elevated" image="https://via.placeholder.com/400x200" title="Kişisel Portföy">
-                Tailwind CSS kullanılarak geliştirilmiş modern ve responsive web sitesi.
-              </Card>
-            </div>
-          </div>
-        </section>
-
-        {/* İLETİŞİM (Input ve Button Component Kullanımı) */}
-        <section id="iletisim" className="py-16 px-4">
-          <div className="max-w-lg mx-auto">
-            <h2 className="text-3xl font-bold text-center text-gray-900 dark:text-white mb-8">
-              Iletisim
-            </h2>
-            <form className="space-y-4">
-              <Input id="name" label="Ad Soyad" required />
-              <Input id="email" label="E-posta" type="email" required />
-              <div className="space-y-1">
-                <label htmlFor="message" className="block text-sm font-medium text-gray-700 dark:text-gray-300">
-                  Mesajiniz
-                </label>
-                <textarea id="message" rows={5} required className="w-full px-3 py-2 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:outline-none dark:bg-gray-800 dark:text-gray-100 dark:border-gray-600"></textarea>
-              </div>
-              <Button variant="primary" size="lg" type="submit" className="w-full">
-                Gonder
+          <div className="flex gap-2 flex-wrap">
+            {categories.map(cat => (
+              <Button 
+                key={cat} 
+                variant={category === cat ? "primary" : "ghost"} 
+                size="sm" 
+                onClick={() => setCategory(cat)}
+              >
+                {cat === "all" ? "Tümü" : cat.toUpperCase()}
               </Button>
-            </form>
+            ))}
           </div>
-        </section>
-      </main>
 
-      {/* FOOTER */}
-      <footer className="bg-gray-100 dark:bg-gray-900 border-t border-gray-200 dark:border-gray-700 text-center py-6 px-4 text-gray-500 dark:text-gray-400 text-sm">
-        <p>&copy; 2026 Enes Özgür Ören. Tüm hakları saklıdır.</p>
-      </footer>
+          <div className="flex gap-2">
+            <select 
+              value={sortField} 
+              onChange={e => setSortField(e.target.value as SortField)} 
+              className="border border-gray-300 rounded-lg px-3 py-2 dark:bg-gray-800 dark:text-white dark:border-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
+            >
+              <option value="year">Yıl</option>
+              <option value="title">Başlık</option>
+            </select>
 
+            <Button 
+              variant="secondary" 
+              size="sm" 
+              onClick={() => setSortOrder(o => o === "asc" ? "desc" : "asc")}
+            >
+              {sortOrder === "asc" ? "A-Z (Artan)" : "Z-A (Azalan)"}
+            </Button>
+          </div>
+        </div>
+
+        {/* YÜKLENİYOR DURUMU */}
+        {loading && (
+          <p className="text-center text-gray-500 my-12 text-lg">
+            Projeler yükleniyor...
+          </p>
+        )}
+
+        {/* BOŞ SONUÇ DURUMU */}
+        {!loading && filtered.length === 0 && !error && (
+          <p className="text-center text-gray-500 my-12 text-lg">
+            Eşleşen proje bulunamadı.
+          </p>
+        )}
+
+        {/* PROJE KARTLARI GRİDİ */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          {filtered.map(project => (
+            <Card 
+              key={project.id} 
+              variant="elevated" 
+              title={project.title} 
+              image={project.image} 
+              imageAlt={`${project.title} ekran görüntüsü`}
+            >
+              <p className="text-sm mb-4 text-gray-600 dark:text-gray-400">
+                {project.description}
+              </p>
+              <div className="flex flex-wrap gap-2">
+                {project.tech.map(t => (
+                  <span 
+                    key={t} 
+                    className="bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 text-xs px-2 py-1 rounded-full font-medium"
+                  >
+                    {t}
+                  </span>
+                ))}
+              </div>
+              <p className="text-xs text-gray-400 dark:text-gray-500 mt-4 font-semibold">
+                {project.year} &middot; {project.category.toUpperCase()}
+              </p>
+            </Card>
+          ))}
+        </div>
+
+        {/* SONUÇ SAYISI BİLGİSİ */}
+        {!loading && !error && (
+          <p className="text-sm text-gray-500 mt-8 text-center font-medium">
+            {filtered.length} / {projects.length} proje gösteriliyor
+          </p>
+        )}
+      </div>
     </div>
   );
 }
-
-export default App;
